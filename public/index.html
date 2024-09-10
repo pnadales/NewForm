@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario</title>
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!-- Personal styles -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <main>
+      <section id="form-section" class="container">
+        <h2 class="pt-3">FICHA MÉDICA</h2>
+        <div id="card-form-container">
+          <div class="card-form">
+            <h5>Ingresa tus datos</h5>
+            <form>
+              <label for="rut">RUT:</label>
+              <input
+                type="text"
+                name="rut"
+                id="rut"
+                title="Ingresa tu RUT"
+                placeholder="RUT"
+                class="input-text data"
+                required
+              />
+              <label for="name">Nombres:</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                title="Ingresa tu nombre"
+                placeholder="Nombre"
+                class="input-text data"
+                required
+              />
+              <label for="last_name">Apellidos:</label>
+              <input
+                type="text"
+                name="last_name"
+                id="last_name"
+                title="Ingresa tus apellidos"
+                placeholder="Apellidos"
+                class="input-text data"
+                required
+              />
+              <label for="address">Dirección</label>
+              <input
+                type="text"
+                name="address"
+                id="address"
+                title="Ingresa tu dirección"
+                placeholder="Dirección"
+                class="input-text data"
+                required
+              />
+              <label for="city">Ciudad:</label>
+              <input
+                type="text"
+                name="city"
+                id="city"
+                title="Ingresa tu cuidad"
+                placeholder="Ciudad"
+                class="input-text data"
+                required
+              />
+              <label for="phone">Teléfono:</label>
+              <input
+                type="tel"
+                name="phone"
+                id="phone"
+                title="Ingresa tu número de teléfono"
+                placeholder="Teléfono"
+                class="input-text data"
+                required
+              />
+
+              <label for="email">Email</label>
+              <!-- <p id="email-error" class="pt-1 d-none">
+                ¡Ingrese un email válido!
+              </p> -->
+              <input
+                type="email"
+                name="email"
+                id="email"
+                title="Ingresa tu email"
+                placeholder="Email"
+                class="input-text data"
+                required
+              />
+              <label for="birthdate">Fecha de Nacimiento:</label>
+              <div class="selection-input">
+                <input
+                  type="date"
+                  name="birthdate"
+                  id="birthdate"
+                  title="Selecciona tu fecha de nacimiento"
+                  min="1900-01-01"
+                  max="2024-09-04"
+                  class="data"
+                  required
+                />
+              </div>
+              <label for="marital_status">Estado Civil:</label>
+              <div class="selection-input">
+                <select
+                  name="marital_status"
+                  id="marital_status"
+                  class="data"
+                  required
+                >
+                  <option value="" selected disabled>
+                    Selecciona tu estado civil
+                  </option>
+                  <option value="Soltero">Soltero</option>
+                  <option value="Casado">Casado</option>
+                  <option value="Divorciado">Divorciado</option>
+                  <option value="Viudo">Viudo</option>
+                </select>
+              </div>
+              <label for="comment">Comentarios:</label>
+              <textarea
+                name="comment"
+                id="comment"
+                title="Escribe tu comentario"
+                placeholder="Comentarios"
+                rows="5"
+                class="data"
+              ></textarea>
+              <div class="submit-container">
+                <button type="reset" class="btn btn-outline-secondary">
+                  Limpiar
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-outline-success ms-3"
+                  onclick="saveForm()"
+                >
+                  Guardar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <h2>Eliminar un registro por RUT</h2>
+        <div class="card-form d-flex justify-content-center">
+          <input
+            type="text"
+            name="delete"
+            id="delete"
+            title="Ingresa RUT"
+            placeholder="RUT"
+            class="input-text"
+            required
+          />
+          <<button
+            type="button"
+            class="btn btn-outline-danger"
+            onclick="deleteRecord()"
+          >
+            Eliminar
+          </button>
+        </div>
+        <h2>Buscar por apellido</h2>
+        <div class="card-form d-flex justify-content-center">
+          <input
+            type="text"
+            name="search"
+            id="search"
+            title="Ingresa apellido"
+            placeholder="Apellido"
+            class="input-text"
+            required
+          />
+          <button
+            type="button"
+            class="btn btn-outline-light ms-3"
+            onclick="searchByLastName()"
+          >
+            Buscar
+          </button>
+        </div>
+      </section>
+    </main>
+    <script src="assets/js/script2.js"></script>
+  </body>
+</html>
