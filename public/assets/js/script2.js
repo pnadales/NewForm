@@ -1,5 +1,7 @@
-const registros = [];
-
+function validRUT(rut) {
+  const regex = /^\d{1,2}(\.\d{3})*-\d|k$/i;
+  return regex.test(rut);
+}
 function addRegister(register, method) {
   fetch("/", {
     method: method,
@@ -24,22 +26,30 @@ function addRegister(register, method) {
 }
 
 function saveForm() {
-  const inputs = document.querySelectorAll(".data");
-  const register = {};
-  inputs.forEach((input) => {
-    register[input.id] = input.value;
-  });
-  fetch(`/exist/${register.rut}`)
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      if (data.exist && confirm("El registro existe, ¿deseeas reemplazarlo?")) {
-        addRegister(register, "PUT");
-      } else if (!data.exist) {
-        addRegister(register, "POST");
-      }
+  const rut = document.getElementById("rut").value;
+  if (validRUT(rut)) {
+    const inputs = document.querySelectorAll(".data");
+    const register = {};
+    inputs.forEach((input) => {
+      register[input.id] = input.value;
     });
+    fetch(`/exist/${register.rut}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        if (
+          data.exist &&
+          confirm("El registro existe, ¿deseeas reemplazarlo?")
+        ) {
+          addRegister(register, "PUT");
+        } else if (!data.exist) {
+          addRegister(register, "POST");
+        }
+      });
+  } else {
+    alert("RUT inválido");
+  }
 }
 
 function deleteRecord() {
